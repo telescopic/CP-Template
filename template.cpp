@@ -24,3 +24,25 @@ long long ClosestPair(vector<pair<ll, ll>> pts) {
     }
     return best_dist;
 }
+###############################################################
+Trie:
+// NOTE: initialize root before using. 
+typedef struct nd{
+    //char c; // content of the node - this is not really necessary
+   // bool is_end; // to mark a node as an end of a string 
+    struct nd *ptrs[26]; // pointers to deeper nodes
+} node;
+node * root;
+node * temp;
+void traverse(char K){
+    ll idx=K-'a'; //index of alphabet
+    if(temp->ptrs[idx]==NULL){ //if link isn't present
+        node * creat=(node*)malloc(sizeof(node)); //allocate memory for alphabet
+        for(int i=0;i<26;i++) creat->ptrs[i]=NULL; //initialize its next pointers to null
+        temp->ptrs[K-'a']=creat; // make the link
+        temp=creat;
+    }
+    else{
+        temp=temp->ptrs[K-'a']; // go to next alphabet
+    }
+}
