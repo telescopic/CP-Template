@@ -46,3 +46,15 @@ void traverse(char K){
         temp=temp->ptrs[K-'a']; // go to next alphabet
     }
 }
+#############################################
+Fast Modulo Multiplication:
+// NOTE: initalize MOD with suitable value
+ll fast_exp(ll base, ll expz) {
+	    ll res=1;
+	    while(expz>0) {
+	       if(expz%2==1) res=(res*base)%MOD;
+	       base=(base*base)%MOD;
+	       expz/=2;
+	    }
+	    return res%MOD;
+}
